@@ -56,7 +56,7 @@ public class ApiManager {
         @GET("_history?")
         Call<RecentQuery> queryRecent(@QueryMap HashMap<String, String> query);
 
-        @PATCH("{id}")
+        @PUT("{id}")
         Call<UpdatePatient> updatePatientInfo(@Path("id") String id, @Body UpdatePatient patient);
     }
 }

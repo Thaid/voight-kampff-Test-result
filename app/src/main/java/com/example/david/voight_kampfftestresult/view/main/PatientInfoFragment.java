@@ -106,6 +106,9 @@ public class PatientInfoFragment extends Fragment implements DatePickerDialog.On
         updateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                localPatient.setDateOfBirth(dobText.getText().toString());
+                localPatient.setFamilyName(familyNameEdit.getText().toString());
+                localPatient.setGender(genderEdit.getText().toString());
                 mListener.updatePatient(localPatient);
             }
         });
@@ -127,12 +130,20 @@ public class PatientInfoFragment extends Fragment implements DatePickerDialog.On
         int month = datePicker.getMonth();
         int day = datePicker.getDayOfMonth();
 
+        String dob = String.valueOf(year);
+        String monthString = String.valueOf(month+1);
+        if (monthString.length() < 2) {
+            monthString = "0" + monthString;
+        }
+
+        dob = dob + "-" + monthString;
+
         String dayString = String.valueOf(day);
-        String dob = String.valueOf(year) + "-" + String.valueOf(month);
+
         if (dayString.length() < 2) {
             dayString = "0" + dayString;
         }
-        dob = dob + "-" + dayString;
+        dob = dob+'-'+dayString;
         dobText.setText(dob);
     }
 
