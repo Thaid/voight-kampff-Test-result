@@ -13,19 +13,12 @@ public class RecentQuery {
     @SerializedName("id")
     @Expose
     private String id;
-    @SerializedName("meta")
-    @Expose
-    private Meta meta;
     @SerializedName("type")
     @Expose
     private String type;
     @SerializedName("total")
     @Expose
     private Integer total;
-    @SerializedName("link")
-    @Expose
-    private List<Link> link = null;
-    @SerializedName("entry")
     @Expose
     private List<Entry> entry = null;
 
@@ -45,14 +38,6 @@ public class RecentQuery {
         this.id = id;
     }
 
-    public Meta getMeta() {
-        return meta;
-    }
-
-    public void setMeta(Meta meta) {
-        this.meta = meta;
-    }
-
     public String getType() {
         return type;
     }
@@ -67,14 +52,6 @@ public class RecentQuery {
 
     public void setTotal(Integer total) {
         this.total = total;
-    }
-
-    public List<Link> getLink() {
-        return link;
-    }
-
-    public void setLink(List<Link> link) {
-        this.link = link;
     }
 
     public List<Entry> getEntry() {

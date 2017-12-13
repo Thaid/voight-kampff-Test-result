@@ -99,7 +99,6 @@ public class MainPresenter implements MainContract.Presenter {
         for(Entry entry : queryResult){
             Resource resource = entry.getResource();
             LocalPatient lp = new LocalPatient();
-            lp.setLastUpdated(resource.getMeta().getLastUpdated());
             lp.setDateOfBirth(resource.getBirthDate());
             lp.setId(resource.getId());
             lp.setGender(resource.getGender());

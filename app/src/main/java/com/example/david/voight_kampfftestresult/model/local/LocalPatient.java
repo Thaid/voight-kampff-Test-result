@@ -9,8 +9,7 @@ import java.util.List;
  * Created by David on 2017-12-12.
  */
 
-public class LocalPatient implements Parcelable{
-    private String lastUpdated;
+public class LocalPatient implements Parcelable {
     private List<String> giveName;
     private String familyName;
     private String gender;
@@ -18,8 +17,7 @@ public class LocalPatient implements Parcelable{
     private String id;
 
 
-    public LocalPatient(String lastUpdated, List<String> giveName, String familyName, String gender, String dateOfBirth) {
-        this.lastUpdated = lastUpdated;
+    public LocalPatient(List<String> giveName, String familyName, String gender, String dateOfBirth) {
         this.giveName = giveName;
         this.familyName = familyName;
         this.gender = gender;
@@ -34,14 +32,6 @@ public class LocalPatient implements Parcelable{
         this.id = id;
     }
 
-
-    public String getLastUpdated() {
-        return lastUpdated;
-    }
-
-    public void setLastUpdated(String lastUpdated) {
-        this.lastUpdated = lastUpdated;
-    }
 
     public List<String> getGiveName() {
         return giveName;
@@ -85,7 +75,6 @@ public class LocalPatient implements Parcelable{
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(this.lastUpdated);
         dest.writeStringList(this.giveName);
         dest.writeString(this.familyName);
         dest.writeString(this.gender);
@@ -94,7 +83,6 @@ public class LocalPatient implements Parcelable{
     }
 
     protected LocalPatient(Parcel in) {
-        this.lastUpdated = in.readString();
         this.giveName = in.createStringArrayList();
         this.familyName = in.readString();
         this.gender = in.readString();

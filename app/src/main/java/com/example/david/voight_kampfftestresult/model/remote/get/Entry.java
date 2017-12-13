@@ -12,9 +12,6 @@ public class Entry {
     @SerializedName("resource")
     @Expose
     private Resource resource;
-    @SerializedName("request")
-    @Expose
-    private Request request;
 
     public String getFullUrl() {
         return fullUrl;
@@ -32,12 +29,5 @@ public class Entry {
         this.resource = resource;
     }
 
-    public Request getRequest() {
-        return request;
-    }
-
-    public void setRequest(Request request) {
-        this.request = request;
-    }
 
 }
