@@ -89,6 +89,11 @@ public class MainFragment extends Fragment implements MainContract.View, Patient
 
     }
 
+    @Override
+    public void showToast(String message) {
+
+    }
+
     private void fetchPatients(String dateFilter, int count){
         presenter.doRecentQuery(dateFilter,count);
     }

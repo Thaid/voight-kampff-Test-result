@@ -25,6 +25,10 @@ public class UpdatePatient {
     @Expose
     private String gender;
 
+    @SerializedName("resourceType")
+    @Expose
+    private String resourceType = "Patient";
+
     public String getBirthDate() {
         return birthDate;
     }

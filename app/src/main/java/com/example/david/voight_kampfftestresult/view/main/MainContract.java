@@ -14,6 +14,8 @@ public class MainContract {
         void updateList(HashMap<String, LocalPatient> patientList);
 
         void showErrorMessage(String message);
+
+        void showToast(String message);
     }
 
     interface Presenter{

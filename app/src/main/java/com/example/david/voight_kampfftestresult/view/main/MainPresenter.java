@@ -82,9 +82,9 @@ public class MainPresenter implements MainContract.Presenter {
             @Override
             public void onResponse(Call<UpdatePatient> call, Response<UpdatePatient> response) {
                 if(response.body() != null){
-
+                    view.showToast("Update Successful");
                 }else{
-                    view.showErrorMessage("a");
+                    view.showErrorMessage(response.message());
                 }
             }
 

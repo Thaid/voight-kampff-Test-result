@@ -1,5 +1,6 @@
 package com.example.david.voight_kampfftestresult.view.main;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Color;
 import android.support.v4.app.Fragment;
@@ -12,7 +13,9 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.FrameLayout;
+import android.widget.Toast;
 
 import com.example.david.voight_kampfftestresult.R;
 import com.example.david.voight_kampfftestresult.manager.ApiManager;
@@ -94,6 +97,19 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
                 })
                 .show();
 
+    }
+
+    @Override
+    public void showToast(String message) {
+        Toast.makeText(this,message,Toast.LENGTH_SHORT).show();
+        if (patientInfo.getVisibility() == View.VISIBLE) {
+            patientInfo.setVisibility(View.GONE);
+        }
+        View view = this.getCurrentFocus();
+        if (view != null) {
+            InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+        }
     }
 
     private void fetchPatients(String dateFilter, int count) {
