@@ -3,8 +3,10 @@ package com.example.david.voight_kampfftestresult.view.main;
 
 import android.app.DatePickerDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -93,6 +95,9 @@ public class PatientInfoFragment extends Fragment implements DatePickerDialog.On
         if (localPatient.getDateOfBirth() != null) {
             dobText.setText(localPatient.getDateOfBirth());
         }
+        if(localPatient.getGiveName() != null && !localPatient.getGiveName().isEmpty()){
+            givenNameEdit.setText(localPatient.getGiveName().get(0));
+        }
     }
 
     private void setUpListeners() {
@@ -109,10 +114,38 @@ public class PatientInfoFragment extends Fragment implements DatePickerDialog.On
                 localPatient.setDateOfBirth(dobText.getText().toString());
                 localPatient.setFamilyName(familyNameEdit.getText().toString());
                 localPatient.setGender(genderEdit.getText().toString());
+                localPatient.getGiveName().set(0,givenNameEdit.getText().toString());
                 mListener.updatePatient(localPatient);
             }
         });
 
+        deleteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showConfirmation();
+            }
+        });
+
+    }
+
+    private void showConfirmation() {
+        AlertDialog.Builder builder;
+        builder = new AlertDialog.Builder(getContext());
+        builder.setTitle("Delete?")
+                .setMessage("Delete patient info?")
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        mListener.deletePatient(localPatient);
+                    }
+                })
+                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.dismiss();
+                    }
+                })
+                .show();
     }
 
     private void showCalendarPicker() {
@@ -149,5 +182,7 @@ public class PatientInfoFragment extends Fragment implements DatePickerDialog.On
 
     public interface OnPatientUpdate {
         void updatePatient(LocalPatient localPatient);
+
+        void deletePatient(LocalPatient localPatient);
     }
 }

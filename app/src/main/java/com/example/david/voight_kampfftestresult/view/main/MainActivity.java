@@ -3,7 +3,6 @@ package com.example.david.voight_kampfftestresult.view.main;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Color;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AlertDialog;
@@ -22,7 +21,6 @@ import com.example.david.voight_kampfftestresult.manager.ApiManager;
 import com.example.david.voight_kampfftestresult.model.local.LocalPatient;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements MainContract.View, PatientInterface, PatientInfoFragment.OnPatientUpdate{
@@ -77,9 +75,9 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
     }
 
     @Override
-    public void updateList(HashMap<String, LocalPatient> patients) {
+    public void updateList(List<LocalPatient> patients) {
         patientList.clear();
-        patientList.addAll(patients.values());
+        patientList.addAll(patients);
         mAdapater.notifyDataSetChanged();
     }
 
@@ -135,5 +133,10 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
     public void updatePatient(LocalPatient localPatient) {
         presenter.updatePatient(localPatient.getId(),localPatient);
 
+    }
+
+    @Override
+    public void deletePatient(LocalPatient localPatient) {
+        presenter.deletePatient(localPatient.getId());
     }
 }

@@ -19,7 +19,6 @@ import com.example.david.voight_kampfftestresult.manager.ApiManager;
 import com.example.david.voight_kampfftestresult.model.local.LocalPatient;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 
@@ -78,9 +77,9 @@ public class MainFragment extends Fragment implements MainContract.View, Patient
 
 
     @Override
-    public void updateList(HashMap<String, LocalPatient> patients) {
+    public void updateList(List<LocalPatient> patients) {
         patientList.clear();
-        patientList.addAll(patients.values());
+        patientList.addAll(patients);
         mAdapater.notifyDataSetChanged();
     }
 

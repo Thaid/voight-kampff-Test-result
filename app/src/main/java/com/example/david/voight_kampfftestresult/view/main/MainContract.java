@@ -2,7 +2,7 @@ package com.example.david.voight_kampfftestresult.view.main;
 
 import com.example.david.voight_kampfftestresult.model.local.LocalPatient;
 
-import java.util.HashMap;
+import java.util.List;
 
 /**
  * Created by David on 2017-12-11.
@@ -11,7 +11,7 @@ import java.util.HashMap;
 public class MainContract {
 
     interface View{
-        void updateList(HashMap<String, LocalPatient> patientList);
+        void updateList(List<LocalPatient> patientList);
 
         void showErrorMessage(String message);
 
@@ -25,5 +25,7 @@ public class MainContract {
         void doRecentQuery(String dateFilter, int count);
 
         void updatePatient(String id, LocalPatient localPatient);
+
+        void deletePatient(String id);
     }
 }

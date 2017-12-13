@@ -39,7 +39,14 @@ public class PatientListAdapter extends RecyclerView.Adapter<PatientListAdapter.
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         final LocalPatient localPatient = mData.get(position);
-        holder.familyName.setText(localPatient.getFamilyName());
+        holder.familyName.setText("Family name: "+localPatient.getFamilyName());
+        if(localPatient.getGiveName() != null && !localPatient.getGiveName().isEmpty()) {
+            holder.givenName.setText("Given name: " + localPatient.getGiveName().get(0));
+        }else{
+            holder.givenName.setText("Given name: ");
+        }
+        holder.gender.setText(localPatient.getGender());
+        holder.dob.setText(localPatient.getDateOfBirth());
         holder.linearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -61,11 +68,17 @@ public class PatientListAdapter extends RecyclerView.Adapter<PatientListAdapter.
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         private TextView familyName;
+        private TextView givenName;
+        private TextView dob;
+        private TextView gender;
         private LinearLayout linearLayout;
 
         public ViewHolder(View itemView) {
             super(itemView);
             familyName = (TextView) itemView.findViewById(R.id.familyName);
+            givenName = (TextView) itemView.findViewById(R.id.name);
+            dob = (TextView) itemView.findViewById(R.id.birthDate);
+            gender = (TextView) itemView.findViewById(R.id.gender);
             linearLayout = (LinearLayout) itemView.findViewById(R.id.list_item_layout);
         }
     }

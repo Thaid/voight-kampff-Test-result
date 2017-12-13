@@ -26,7 +26,7 @@ public class MainPresenter implements MainContract.Presenter {
     private MainContract.View view;
     private ApiManager.Service service;
     private List<Entry> queryResult = new ArrayList<>();
-    private HashMap<String, LocalPatient> patientList = new HashMap<>();
+    private List<LocalPatient> patientList = new ArrayList<>();
 
     public MainPresenter(MainContract.View view, ApiManager.Service service) {
         this.view = view;
@@ -95,7 +95,27 @@ public class MainPresenter implements MainContract.Presenter {
         });
     }
 
+    @Override
+    public void deletePatient(String id) {
+        service.deletePatient(id).enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+                if(response.body() != null){
+                    view.showToast(response.message());
+                }else{
+                    view.showErrorMessage(response.message());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
+
+            }
+        });
+    }
+
     public void mapRemoteToLocal(){
+        patientList.clear();
         for(Entry entry : queryResult){
             Resource resource = entry.getResource();
             LocalPatient lp = new LocalPatient();
@@ -108,7 +128,7 @@ public class MainPresenter implements MainContract.Presenter {
                     lp.setGiveName(resource.getName().get(0).getGiven());
                 }
             }
-            patientList.put(resource.getId(),lp);
+            patientList.add(lp);
         }
         view.updateList(patientList);
     }
