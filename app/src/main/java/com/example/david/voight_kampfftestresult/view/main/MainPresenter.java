@@ -5,6 +5,8 @@ import com.example.david.voight_kampfftestresult.model.local.LocalPatient;
 import com.example.david.voight_kampfftestresult.model.remote.get.Entry;
 import com.example.david.voight_kampfftestresult.model.remote.get.RecentQuery;
 import com.example.david.voight_kampfftestresult.model.remote.get.Resource;
+import com.example.david.voight_kampfftestresult.model.remote.put.Name;
+import com.example.david.voight_kampfftestresult.model.remote.put.UpdatePatient;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -59,7 +61,7 @@ public class MainPresenter implements MainContract.Presenter {
                     queryResult.addAll(response.body().getEntry());
                     mapRemoteToLocal();
                 }else{
-                    view.showErrorMessage("Error");
+                    view.showErrorMessage(response.message());
                 }
             }
 
@@ -72,12 +74,34 @@ public class MainPresenter implements MainContract.Presenter {
 
     }
 
+    @Override
+    public void updatePatient(String id, LocalPatient localPatient) {
+        UpdatePatient updatePatient = new UpdatePatient();
+        updatePatient.convertLocalToRemote(localPatient);
+        service.updatePatientInfo(id,updatePatient).enqueue(new Callback<UpdatePatient>() {
+            @Override
+            public void onResponse(Call<UpdatePatient> call, Response<UpdatePatient> response) {
+                if(response.body() != null){
+
+                }else{
+                    view.showErrorMessage("a");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<UpdatePatient> call, Throwable t) {
+
+            }
+        });
+    }
+
     public void mapRemoteToLocal(){
         for(Entry entry : queryResult){
             Resource resource = entry.getResource();
             LocalPatient lp = new LocalPatient();
             lp.setLastUpdated(resource.getMeta().getLastUpdated());
             lp.setDateOfBirth(resource.getBirthDate());
+            lp.setId(resource.getId());
             lp.setGender(resource.getGender());
             if(resource.getName() != null) {
                 lp.setFamilyName(resource.getName().get(0).getFamily());
