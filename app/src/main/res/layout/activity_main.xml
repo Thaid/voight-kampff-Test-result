@@ -14,7 +14,6 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         tools:context="com.example.david.voight_kampfftestresult.view.main.MainFragment">
 
-
         <android.support.design.widget.AppBarLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -26,7 +25,7 @@
         </android.support.design.widget.AppBarLayout>
 
         <FrameLayout
-            android:id="@+id/patientInfoContainer"
+            android:id="@+id/patient_info_container"
             android:visibility="gone"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
@@ -36,7 +35,7 @@
             android:layout_weight="1"
             android:id="@+id/patient_list_rv"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="0dp" />
 
     </LinearLayout>
 

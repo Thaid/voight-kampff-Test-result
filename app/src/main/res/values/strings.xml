@@ -4,4 +4,10 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_main2">Main2Activity</string>
+    <string name="given_name_text">Given name:</string>
+    <string name="family_name_text">Family name:</string>
+    <string name="gender_text">Gender:</string>
+    <string name="date_of_birth_text">Date of Birth:</string>
+    <string name="update_text">Update</string>
+    <string name="delete_text">Delete</string>
 </resources>

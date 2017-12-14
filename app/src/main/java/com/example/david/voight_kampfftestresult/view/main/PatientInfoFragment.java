@@ -76,13 +76,13 @@ public class PatientInfoFragment extends Fragment implements DatePickerDialog.On
     }
 
     private void setUpView() {
-        givenNameEdit = (EditText) view.findViewById(R.id.given_name_edit);
-        familyNameEdit = (EditText) view.findViewById(R.id.family_name_edit);
-        genderEdit = (EditText) view.findViewById(R.id.gender_edit);
-        dobLayout = (LinearLayout) view.findViewById(R.id.dob_linear_layout);
-        dobText = (TextView) view.findViewById(R.id.dob_text);
-        updateButton = (Button) view.findViewById(R.id.update_patient_info);
-        deleteButton = (Button) view.findViewById(R.id.delete_patient_info);
+        givenNameEdit = (EditText) view.findViewById(R.id.frag_given_name_edit);
+        familyNameEdit = (EditText) view.findViewById(R.id.frag_family_name_edit);
+        genderEdit = (EditText) view.findViewById(R.id.frag_gender_edit);
+        dobLayout = (LinearLayout) view.findViewById(R.id.frag_dob_linear_layout);
+        dobText = (TextView) view.findViewById(R.id.frag_dob_text);
+        updateButton = (Button) view.findViewById(R.id.frag_update_patient_info);
+        deleteButton = (Button) view.findViewById(R.id.frag_delete_patient_info);
     }
 
     private void populateView() {

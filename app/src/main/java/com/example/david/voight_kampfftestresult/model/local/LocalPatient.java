@@ -9,7 +9,7 @@ import java.util.List;
  * Created by David on 2017-12-12.
  */
 
-public class LocalPatient implements Parcelable {
+public class LocalPatient implements Parcelable  {
     private List<String> giveName;
     private String familyName;
     private String gender;

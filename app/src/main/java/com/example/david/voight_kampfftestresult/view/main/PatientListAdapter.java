@@ -75,10 +75,10 @@ public class PatientListAdapter extends RecyclerView.Adapter<PatientListAdapter.
 
         public ViewHolder(View itemView) {
             super(itemView);
-            familyName = (TextView) itemView.findViewById(R.id.familyName);
-            givenName = (TextView) itemView.findViewById(R.id.name);
-            dob = (TextView) itemView.findViewById(R.id.birthDate);
-            gender = (TextView) itemView.findViewById(R.id.gender);
+            familyName = (TextView) itemView.findViewById(R.id.li_family_name);
+            givenName = (TextView) itemView.findViewById(R.id.li_patient_name);
+            dob = (TextView) itemView.findViewById(R.id.li_birth_date);
+            gender = (TextView) itemView.findViewById(R.id.li_gender);
             linearLayout = (LinearLayout) itemView.findViewById(R.id.list_item_layout);
         }
     }
