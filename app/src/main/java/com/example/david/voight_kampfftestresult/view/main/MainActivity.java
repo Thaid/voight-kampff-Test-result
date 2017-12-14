@@ -68,7 +68,9 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
                 break;
             case R.id.menu_sort_family:
                 sortList(Constants.SORT_FAMILY);
-
+                break;
+            case R.id.menu_refresh:
+                presenter.doRecentQuery("",10);
         }
         return super.onOptionsItemSelected(item);
     }
@@ -78,6 +80,12 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
             Collections.sort(patientList, new Comparator<LocalPatient>() {
                 @Override
                 public int compare(LocalPatient localPatient, LocalPatient t1) {
+                    if(localPatient.getDateOfBirth() == null){
+                        return (t1.getFamilyName() == null) ? -1 : 0;
+                    }
+                    if(t1.getDateOfBirth() == null){
+                        return -1;
+                    }
                     return localPatient.getDateOfBirth().compareTo(t1.getDateOfBirth());
                 }
             });

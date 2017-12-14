@@ -3,12 +3,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/menu_sort_family"
-        android:title="Sort by family name"
+        android:title="@string/sort_by_family_name_text"
         app:showAsAction="never" />
 
     <item
         android:id="@+id/menu_sort_birthdate"
-        android:title="Sort by birthdate"
+        android:title="@string/sort_by_birthdate_text"
         app:showAsAction="never" />
+
+    <item android:id="@+id/menu_refresh"
+        android:title="@string/refresh_text"
+        app:showAsAction="always"
+        android:icon="@drawable/ic_refresh"
+    />
 
 </menu>

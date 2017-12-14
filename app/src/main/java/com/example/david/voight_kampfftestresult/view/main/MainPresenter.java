@@ -54,6 +54,7 @@ public class MainPresenter implements MainContract.Presenter {
         }
         queryMap.put("_count",String.valueOf(count));
 
+        queryResult.clear();
         service.queryRecent(queryMap).enqueue(new Callback<RecentQuery>() {
             @Override
             public void onResponse(Call<RecentQuery> call, Response<RecentQuery> response) {
